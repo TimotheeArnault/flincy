@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "snapshot_version": "g1.4-public-documentation",
+  "selected_source_commit": "4f8919f8b3acbb70f9869dfb9839989306fb27cf",
+  "candidate_code_baseline_commit": "70381f5a598769144efe3551d56092982d2e8206",
+  "hash_algorithm": "sha256",
+  "hash_basis": "Git blob bytes at this candidate revision, before platform-specific checkout line-ending conversion.",
+  "scope": "Selected O4 modules, Python modules, frontend source references, adapted Python delivery test and synthetic execution assets. Not an exhaustive repository inventory.",
+  "classification_definitions": {
+    "identical": "Content copied unchanged from the selected source snapshot; relocation alone does not change content.",
+    "path_or_config_adaptation": "A bounded import or configuration adaptation, explicitly described.",
+    "demo_only": "Created for the fictional prepared-input demonstration, not copied from production records."
+  },
+  "limitations": [
+    "The private source commit is an identifier, not a publicly accessible source or a proof of live-site identity.",
+    "The containing candidate commit is obtained from Git; no self-referential commit hash is embedded.",
+    "Documentation, build configuration and unchanged selected historical tests are outside this limited mapping.",
+    "No private source paths, remote, account identity or operational data are included."
+  ],
+  "files": [
+    {
+      "path": "examples/synthetic-search/expected.json",
+      "sha256": "3bfbf24efc39e9e173ac9d8e47228fa47c6c40b6827823fe913cf902c6f63582",
+      "classification": "demo_only",
+      "origin": "synthetic_demo"
+    },
+    {
+      "path": "examples/synthetic-search/run.cjs",
+      "sha256": "f3c9759dc94bb3169e74d96ec7d80dab9622c40b6eb70d5e0df041cf39df7110",
+      "classification": "demo_only",
+      "origin": "synthetic_demo"
+    },
+    {
+      "path": "pipeline/frontend_free_anchor_delivery.py",
+      "sha256": "b77aedf019e479e3f9d5c1367733fc6e5e2b71150729698786c9ac98d3612365",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated module; source content unchanged."
+    },
+    {
+      "path": "pipeline/public_product_bundle_v1.py",
+      "sha256": "66e80d52a3e71ebcc91234092f146b5050b4499414679973126ec4fb5a31ff65",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated module; source content unchanged."
+    },
+    {
+      "path": "pipeline/user_fit_candidate_v1.py",
+      "sha256": "ee1f5db1d94284fba08e5be17379e74e8bb591e0a4afcf8cd218f32c9190d911",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated module; source content unchanged."
+    },
+    {
+      "path": "pipeline/user_fit_explanation_v1.py",
+      "sha256": "8dd0957985615cf9eba1d24d91d4921ef37ce287d91723d123ce5ea63e29051f",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated module; source content unchanged."
+    },
+    {
+      "path": "reference/frontend/components/DecisionFocus.tsx",
+      "sha256": "f65fbba4d648ff0a28de450ff56944d806051bd80d992159a013766aad73716b",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated source reference; not a standalone frontend."
+    },
+    {
+      "path": "reference/frontend/components/ExploreMap.tsx",
+      "sha256": "96761d00439dd5af2387a52f012a374cae9c60b665632d4235a0cbb6e2777457",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated source reference; not a standalone frontend."
+    },
+    {
+      "path": "reference/frontend/components/ListingDetail.tsx",
+      "sha256": "8a800eaea5bf97c76d146547f80d4c96b853637877170671f415e6a382f87e13",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated source reference; not a standalone frontend."
+    },
+    {
+      "path": "reference/frontend/lib/fitRuntime.ts",
+      "sha256": "e8df7b0e2fef3ce8c4f0086c3d3fc013dc94c570d45f6501321431d997fe5f0b",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated source reference; not a standalone frontend."
+    },
+    {
+      "path": "reference/frontend/lib/searchState.ts",
+      "sha256": "2535c216771b45dadf6c0597ae10f35d9e00042b57dcc6a8eab1370936d58638",
+      "classification": "identical",
+      "origin": "selected_source",
+      "note": "Relocated source reference; not a standalone frontend."
+    },
+    {
+      "path": "tests/test_frontend_free_anchor_delivery.py",
+      "sha256": "7b24c1bccbe6a37e2a8719b81707d99c441f44b7d84225aefa156f560d768ebd",
+      "classification": "path_or_config_adaptation",
+      "origin": "selected_source",
+      "adaptation": "Only the import prefix changed from scripts.frontend_free_anchor_delivery to pipeline.frontend_free_anchor_delivery; assertions and fixtures are unchanged."
+    },
+    {
+      "path": "web/fit-engine/src/bundleAdapter.ts",
+      "sha256": "f2c555cdbafca44ba66f36f6d6dc6539da84745a78af016ba0bb1e99c821d01b",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/engine.ts",
+      "sha256": "9d48749f8786654e6f5a6bba4b9b50eb4c3a12b6714501cd5aa5a1b571b08e0f",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/evaluators.ts",
+      "sha256": "c98025350df1e800caa7963cc32b6035ccfdabc2077b9ef098979be9b30a9ef7",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/explanation.ts",
+      "sha256": "d1cd5aa8459a72999ea33d22ab35bac3340478dc36739dd5f2a404feed10d805",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/index.ts",
+      "sha256": "6d981a05fbc36294679c1d045ef65df536bf899922414e4092a38b4303982302",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/postalAdapter.ts",
+      "sha256": "c91c66b0a48ac1506b1c1c59a851810bd3cf9563e7dd4fa6968b52f520fb8fe9",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/ranking.ts",
+      "sha256": "0dcf77268bf36942e6ed78a186ff39694b24d16b82497e680c41a5018882e8b0",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/scoring.ts",
+      "sha256": "a200e7995f3206a0b04e85f60d8b6f2a50176f58af3dc6b29014c998d44aecb7",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/spatial.ts",
+      "sha256": "f0bc8aa8d5a0eec8070a91e0fb3b3049cc87fbbba760892941169a8f09dc242b",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/src/types.ts",
+      "sha256": "2bc368608e6d9ed7eec36ff41d6d5d383d0f9ea78c752cf56ce70bc548305593",
+      "classification": "identical",
+      "origin": "selected_source"
+    },
+    {
+      "path": "web/fit-engine/tests/fixtures/syntheticSearch.ts",
+      "sha256": "eb0c29ac7616b78f966ed2f5ce9fd4a9c7454269ee328cbd0529a8db674db2fd",
+      "classification": "demo_only",
+      "origin": "synthetic_demo"
+    },
+    {
+      "path": "web/fit-engine/tests/syntheticSearch.test.ts",
+      "sha256": "a23eaeb869a93fc884e3a442cc649add3c7efa24e84f5278761eb760fe9b4b24",
+      "classification": "demo_only",
+      "origin": "synthetic_demo"
+    }
+  ]
+}
