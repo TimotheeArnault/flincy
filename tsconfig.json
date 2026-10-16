@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "web/fit-engine",
+    "outDir": "web/fit-engine/dist",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmitOnError": true,
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "web/fit-engine/src/engine.ts",
+    "web/fit-engine/src/evaluators.ts",
+    "web/fit-engine/src/scoring.ts",
+    "web/fit-engine/src/ranking.ts",
+    "web/fit-engine/src/explanation.ts",
+    "web/fit-engine/src/types.ts",
+    "web/fit-engine/src/bundleAdapter.ts",
+    "web/fit-engine/src/postalAdapter.ts",
+    "web/fit-engine/src/spatial.ts",
+    "web/fit-engine/src/index.ts",
+    "web/fit-engine/tests/evaluators.test.ts",
+    "web/fit-engine/tests/ranking.test.ts",
+    "web/fit-engine/tests/engineContract.test.ts",
+    "web/fit-engine/tests/syntheticSearch.test.ts",
+    "web/fit-engine/tests/fixtures/syntheticSearch.ts"
+  ]
+}

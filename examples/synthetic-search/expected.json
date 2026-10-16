@@ -1,0 +1,329 @@
+{
+  "scenario": "synthetic-search-v1",
+  "results": [
+    {
+      "listing_uid": "synthetic:A",
+      "feasibility_status": "feasible",
+      "feasibility_reason_code": "all_required_anchors_strict_match",
+      "listing_eligibility_status": "eligible",
+      "listing_eligibility_reason_code": "all_listing_constraints_satisfied",
+      "fit_status": "eligible",
+      "result_section": "main_results",
+      "is_default_main_result": true,
+      "canonical_rank": 1,
+      "semantic_tie_rank": 1,
+      "fit_score": 50,
+      "profile_coverage": 100,
+      "coverage_class": "complete",
+      "primary_commute_minutes": 30,
+      "primary_commute_status": "strict_match",
+      "problem_criterion_ids": [
+        "dishwasher_preference"
+      ],
+      "base_criteria": [
+        {
+          "criterion_id": "budget_limit",
+          "constraint_scope": "listing_eligibility",
+          "criterion_status": "strict_match",
+          "reason_code": "strict_threshold_satisfied",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        },
+        {
+          "criterion_id": "primary_commute",
+          "constraint_scope": "search_feasibility",
+          "criterion_status": "strict_match",
+          "reason_code": "within_lower_is_better_threshold",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        }
+      ],
+      "comfort_criteria": [
+        {
+          "criterion_id": "laundry_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        },
+        {
+          "criterion_id": "dishwasher_preference",
+          "semantic_truth_value": "absent",
+          "evidence_status": "confirmed_negative",
+          "criterion_status": "fail",
+          "criterion_score": 0,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_negative"
+        }
+      ],
+      "points": {
+        "allocated": 100,
+        "evaluable": 100,
+        "earned": 50,
+        "missed": 50,
+        "unknown": 0,
+        "reconciliation_valid": true
+      }
+    },
+    {
+      "listing_uid": "synthetic:B",
+      "feasibility_status": "feasible",
+      "feasibility_reason_code": "all_required_anchors_strict_match",
+      "listing_eligibility_status": "eligible",
+      "listing_eligibility_reason_code": "all_listing_constraints_satisfied",
+      "fit_status": "eligible",
+      "result_section": "main_results",
+      "is_default_main_result": true,
+      "canonical_rank": 2,
+      "semantic_tie_rank": 2,
+      "fit_score": 100,
+      "profile_coverage": 50,
+      "coverage_class": "partial",
+      "primary_commute_minutes": 30,
+      "primary_commute_status": "strict_match",
+      "problem_criterion_ids": [
+        "dishwasher_preference"
+      ],
+      "base_criteria": [
+        {
+          "criterion_id": "budget_limit",
+          "constraint_scope": "listing_eligibility",
+          "criterion_status": "strict_match",
+          "reason_code": "strict_threshold_satisfied",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        },
+        {
+          "criterion_id": "primary_commute",
+          "constraint_scope": "search_feasibility",
+          "criterion_status": "strict_match",
+          "reason_code": "within_lower_is_better_threshold",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        }
+      ],
+      "comfort_criteria": [
+        {
+          "criterion_id": "laundry_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        },
+        {
+          "criterion_id": "dishwasher_preference",
+          "semantic_truth_value": "unknown",
+          "evidence_status": "truly_unresolved",
+          "criterion_status": "unresolved",
+          "criterion_score": null,
+          "criterion_is_usable": false,
+          "reason_code": "unresolved_evidence"
+        }
+      ],
+      "points": {
+        "allocated": 100,
+        "evaluable": 50,
+        "earned": 50,
+        "missed": 0,
+        "unknown": 50,
+        "reconciliation_valid": true
+      }
+    },
+    {
+      "listing_uid": "synthetic:C",
+      "feasibility_status": "feasible",
+      "feasibility_reason_code": "all_required_anchors_strict_match",
+      "listing_eligibility_status": "near_miss",
+      "listing_eligibility_reason_code": "listing_constraint_near_miss",
+      "fit_status": "near_miss",
+      "result_section": "qa_or_secondary_section",
+      "is_default_main_result": false,
+      "canonical_rank": 3,
+      "semantic_tie_rank": 3,
+      "fit_score": 100,
+      "profile_coverage": 100,
+      "coverage_class": "complete",
+      "primary_commute_minutes": 30,
+      "primary_commute_status": "strict_match",
+      "problem_criterion_ids": [],
+      "base_criteria": [
+        {
+          "criterion_id": "budget_limit",
+          "constraint_scope": "listing_eligibility",
+          "criterion_status": "near_miss",
+          "reason_code": "within_numeric_tolerance",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        },
+        {
+          "criterion_id": "primary_commute",
+          "constraint_scope": "search_feasibility",
+          "criterion_status": "strict_match",
+          "reason_code": "within_lower_is_better_threshold",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        }
+      ],
+      "comfort_criteria": [
+        {
+          "criterion_id": "laundry_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        },
+        {
+          "criterion_id": "dishwasher_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        }
+      ],
+      "points": {
+        "allocated": 100,
+        "evaluable": 100,
+        "earned": 100,
+        "missed": 0,
+        "unknown": 0,
+        "reconciliation_valid": true
+      }
+    },
+    {
+      "listing_uid": "synthetic:E",
+      "feasibility_status": "unresolved",
+      "feasibility_reason_code": "required_anchor_unresolved",
+      "listing_eligibility_status": "eligible",
+      "listing_eligibility_reason_code": "all_listing_constraints_satisfied",
+      "fit_status": "eligible",
+      "result_section": "qa_or_secondary_section",
+      "is_default_main_result": false,
+      "canonical_rank": 4,
+      "semantic_tie_rank": 4,
+      "fit_score": 100,
+      "profile_coverage": 100,
+      "coverage_class": "complete",
+      "primary_commute_minutes": null,
+      "primary_commute_status": "unresolved",
+      "problem_criterion_ids": [],
+      "base_criteria": [
+        {
+          "criterion_id": "budget_limit",
+          "constraint_scope": "listing_eligibility",
+          "criterion_status": "strict_match",
+          "reason_code": "strict_threshold_satisfied",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        },
+        {
+          "criterion_id": "primary_commute",
+          "constraint_scope": "search_feasibility",
+          "criterion_status": "unresolved",
+          "reason_code": "synthetic_commute_missing",
+          "criterion_is_usable": false,
+          "score_enabled": false
+        }
+      ],
+      "comfort_criteria": [
+        {
+          "criterion_id": "laundry_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        },
+        {
+          "criterion_id": "dishwasher_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        }
+      ],
+      "points": {
+        "allocated": 100,
+        "evaluable": 100,
+        "earned": 100,
+        "missed": 0,
+        "unknown": 0,
+        "reconciliation_valid": true
+      }
+    },
+    {
+      "listing_uid": "synthetic:D",
+      "feasibility_status": "not_feasible",
+      "feasibility_reason_code": "required_anchor_failed",
+      "listing_eligibility_status": "eligible",
+      "listing_eligibility_reason_code": "all_listing_constraints_satisfied",
+      "fit_status": "eligible",
+      "result_section": "qa_or_secondary_section",
+      "is_default_main_result": false,
+      "canonical_rank": 5,
+      "semantic_tie_rank": 5,
+      "fit_score": 100,
+      "profile_coverage": 100,
+      "coverage_class": "complete",
+      "primary_commute_minutes": 60,
+      "primary_commute_status": "fail",
+      "problem_criterion_ids": [],
+      "base_criteria": [
+        {
+          "criterion_id": "budget_limit",
+          "constraint_scope": "listing_eligibility",
+          "criterion_status": "strict_match",
+          "reason_code": "strict_threshold_satisfied",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        },
+        {
+          "criterion_id": "primary_commute",
+          "constraint_scope": "search_feasibility",
+          "criterion_status": "fail",
+          "reason_code": "outside_lower_is_better_tolerance",
+          "criterion_is_usable": true,
+          "score_enabled": false
+        }
+      ],
+      "comfort_criteria": [
+        {
+          "criterion_id": "laundry_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        },
+        {
+          "criterion_id": "dishwasher_preference",
+          "semantic_truth_value": "present",
+          "evidence_status": "confirmed_positive",
+          "criterion_status": "strict_match",
+          "criterion_score": 100,
+          "criterion_is_usable": true,
+          "reason_code": "confirmed_positive"
+        }
+      ],
+      "points": {
+        "allocated": 100,
+        "evaluable": 100,
+        "earned": 100,
+        "missed": 0,
+        "unknown": 0,
+        "reconciliation_valid": true
+      }
+    }
+  ]
+}

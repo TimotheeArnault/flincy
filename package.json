@@ -1,0 +1,18 @@
+{
+  "name": "flincy-synthetic-o4-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Selected authentic O4 engine tests and a fictional prepared-input demonstration",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test web/fit-engine/dist/tests/evaluators.test.js web/fit-engine/dist/tests/ranking.test.js web/fit-engine/dist/tests/engineContract.test.js web/fit-engine/dist/tests/syntheticSearch.test.js",
+    "demo": "npm run build && node examples/synthetic-search/run.cjs"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2"
+  }
+}
