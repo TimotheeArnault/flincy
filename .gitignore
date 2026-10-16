@@ -1,0 +1,13 @@
+node_modules/
+web/fit-engine/dist/
+*.tsbuildinfo
+tmp/
+.tmp/
+*.log
+.env*
+.npmrc
+secrets/
+*.pem
+*.key
+__pycache__/
+*.pyc

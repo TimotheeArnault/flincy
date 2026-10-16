@@ -1,0 +1,247 @@
+{
+  "authority": "authoritative_browser_fit_structure",
+  "canonical": true,
+  "contract_id": "browser_engine_input_contract_v1",
+  "contract_semantic_hash": "32a504164084adacb4299832dd7c6396318741b3dce068b35b963209d0485763",
+  "contract_version": "ms_0_16_o2f_browser_engine_input_contract_v1",
+  "evaluation_contract_version": "fit_evaluation_contract_v1",
+  "explanation": {
+    "bucket": {
+      "allocated_budget_points": "effective_bucket_weight * 100",
+      "earned_points": "evaluable_budget_points * bucket_score_raw / 100",
+      "evaluable_budget_points": "allocated_budget_points * bucket_coverage_raw",
+      "missed_points": "evaluable_budget_points - earned_points",
+      "unknown_points": "allocated_budget_points - evaluable_budget_points"
+    },
+    "component": {
+      "allocated_budget_points": "bucket_allocated_budget_points * effective_component_weight",
+      "earned_points": "evaluable_budget_points * component_score_raw / 100",
+      "effective_component_weight": "configured_component_weight / sum(configured_component_weight for listing-active components)",
+      "evaluable_budget_points": "allocated_budget_points * component_coverage_raw",
+      "inactive_component": "allocated_budget_points = 0 and excluded before renormalization",
+      "missed_points": "evaluable_budget_points - earned_points",
+      "unknown_points": "allocated_budget_points - evaluable_budget_points"
+    },
+    "criterion": {
+      "allocated_budget_points": "component_allocated_budget_points * atomic_weight",
+      "earned_points": "evaluable_budget_points * criterion_score_raw / 100",
+      "evaluable_budget_points": "allocated_budget_points when criterion_is_usable else 0",
+      "missed_points": "evaluable_budget_points - earned_points",
+      "unknown_points": "allocated_budget_points - evaluable_budget_points"
+    },
+    "display_rounding": "frontend_only",
+    "evidence_partition": {
+      "ambiguous": "unknown_non_evaluable",
+      "confirmed_negative": "evaluable_missed",
+      "invalid_observation": "unknown_non_evaluable",
+      "no_positive_evidence_after_valid_observation": "evaluable_missed",
+      "truly_unresolved": "unknown_non_evaluable"
+    },
+    "global": {
+      "coverage": "total_evaluable_budget / total_allocated_budget",
+      "partition": "total_allocated_budget = total_earned_points + total_missed_points + total_unknown_points",
+      "total_allocated_budget": 100.0,
+      "user_fit_score": "total_earned_points / total_evaluable_budget * 100 when total_evaluable_budget > 0"
+    },
+    "point_scale": 100.0,
+    "precision": "raw_binary_float_for_parity"
+  },
+  "fit_contract_version": "fit_product_calibration_v1",
+  "forbidden_browser_recomputation": [
+    "C1_semantic_resolution",
+    "objective_score",
+    "life_centric_score",
+    "R5_routing",
+    "POI_WALK_routing",
+    "benchmark_medians"
+  ],
+  "golden_schema": {
+    "detailed_sample_required": [
+      "bucket_outputs",
+      "component_outputs",
+      "criterion_outputs",
+      "reason_codes",
+      "allocated_evaluable_earned_missed_unknown"
+    ],
+    "profile_level_required": [
+      "listing_uid",
+      "search_state_id",
+      "resolved_search_state_hash",
+      "feasibility_status",
+      "listing_eligibility_status",
+      "fit_status",
+      "profile_coverage_raw",
+      "fit_score_raw",
+      "canonical_rank"
+    ]
+  },
+  "i18n": {
+    "business_ids_language_neutral": true,
+    "locale_affects_hash_score_status_rank": false,
+    "parameterized_reason_code_syntax": "base_code:argument_id[,argument_id]",
+    "translations_in_contract": false
+  },
+  "input_families": [
+    {
+      "authority": "fit search-state contract and resolved state",
+      "browser_role": "browser_input",
+      "input_family": "search_state",
+      "typed_contract": "typed object"
+    },
+    {
+      "authority": "resolved criteria",
+      "browser_role": "browser_input",
+      "input_family": "hard_constraints",
+      "typed_contract": "typed criteria"
+    },
+    {
+      "authority": "O2D calibration v1",
+      "browser_role": "browser_input",
+      "input_family": "bucket_component_weights",
+      "typed_contract": "numbers"
+    },
+    {
+      "authority": "O2D calibration v1",
+      "browser_role": "browser_input",
+      "input_family": "observation_policies",
+      "typed_contract": "enums"
+    },
+    {
+      "authority": "C1/O2D fit facts",
+      "browser_role": "browser_input",
+      "input_family": "semantic_evidence_states",
+      "typed_contract": "enums plus typed values"
+    },
+    {
+      "authority": "SCF-B WALK facts",
+      "browser_role": "browser_input",
+      "input_family": "daily_walk",
+      "typed_contract": "seconds plus status"
+    },
+    {
+      "authority": "C2 station/line facts",
+      "browser_role": "browser_input",
+      "input_family": "metro_access",
+      "typed_contract": "meters/minutes plus status"
+    },
+    {
+      "authority": "SCF-C static Search shards",
+      "browser_role": "browser_input",
+      "input_family": "commute",
+      "typed_contract": "seconds plus routing status"
+    },
+    {
+      "authority": "O2D current",
+      "browser_role": "browser_output_contract",
+      "input_family": "reason_codes",
+      "typed_contract": "language-neutral enums"
+    },
+    {
+      "authority": "O2D calibration v1",
+      "browser_role": "browser_output_contract",
+      "input_family": "explanation_algebra",
+      "typed_contract": "raw numbers"
+    },
+    {
+      "authority": "current objective output",
+      "browser_role": "precomputed_only",
+      "input_family": "objective",
+      "typed_contract": "must not be recomputed"
+    },
+    {
+      "authority": "current life-centric output",
+      "browser_role": "precomputed_only",
+      "input_family": "life_centric",
+      "typed_contract": "must not be recomputed"
+    },
+    {
+      "authority": "C1 typed facts",
+      "browser_role": "precomputed_only",
+      "input_family": "c1_semantics",
+      "typed_contract": "must not be reparsed"
+    },
+    {
+      "authority": "SCF-C static assets",
+      "browser_role": "precomputed_only",
+      "input_family": "r5_routing",
+      "typed_contract": "no runtime R5"
+    },
+    {
+      "authority": "SCF-B current facts",
+      "browser_role": "precomputed_only",
+      "input_family": "poi_walk",
+      "typed_contract": "no runtime routing"
+    }
+  ],
+  "logical_fact_sources": {
+    "commute": "SCF-C common grid plus content-hashed Search shards",
+    "criterion_evidence": "listing_fit_component_criterion_eval_current_v1",
+    "daily_walk": "listing_poi_walk_access_current_v1",
+    "metro_access": "routing metro access contracts and typed listing facts",
+    "price_and_bedrooms": "product_current_candidates_v0",
+    "semantic_fit_facts": "listing_fit_feature_facts_current_v1"
+  },
+  "maximum_anchor_count": 2,
+  "o4_gate": "BROWSER_ENGINE_INPUT_CONTRACT_READY",
+  "observation_semantics": {
+    "policies": {
+      "EXPLICIT_STATE": {
+        "ambiguous": "unresolved",
+        "confirmed_negative": "usable_explicit_state",
+        "confirmed_positive": "usable_explicit_state",
+        "no_positive_evidence_after_valid_observation": "unresolved",
+        "truly_unresolved": "unresolved"
+      },
+      "POSITIVE_EVIDENCE_EXPECTED": {
+        "ambiguous": "unresolved",
+        "confirmed_negative": "usable_negative",
+        "confirmed_positive": "usable_positive",
+        "no_positive_evidence_after_valid_observation": "usable_no_positive_credit",
+        "truly_unresolved": "unresolved"
+      },
+      "TRUE_UNKNOWN": {
+        "ambiguous": "unresolved",
+        "confirmed_negative": "usable_negative",
+        "confirmed_positive": "usable_positive",
+        "no_positive_evidence_after_valid_observation": "unresolved",
+        "truly_unresolved": "unresolved"
+      }
+    },
+    "semantic_truth_distinct_from_scoring_evidence": true,
+    "unknown_never_becomes_false": true
+  },
+  "parity_layers": [
+    "unit_fixtures",
+    "official_persona_goldens",
+    "custom_search_state_golden"
+  ],
+  "ranking": {
+    "authority": "fit_ranking_contract_v1",
+    "listing_uid_is_only_deterministic_tie_breaker": true,
+    "status_bands_are_not_continuous_value_comparisons": true
+  },
+  "ranking_contract_version": "fit_ranking_contract_v1",
+  "schema_version": "browser_engine_input_contract_schema_v1",
+  "search_state": {
+    "active_buckets_and_weights_explicit": true,
+    "components_and_weights_explicit": true,
+    "criterion_parameters_explicit": true,
+    "hard_constraints_explicit": true,
+    "observation_policies_explicit": true,
+    "public_labels_affect_semantic_hash": false
+  },
+  "search_state_contract_version": "fit_search_state_contract_v1",
+  "spatial_delivery": {
+    "anchor_to_anchor_routing": false,
+    "common_grid_plus_content_hashed_shards": true,
+    "maximum_independent_anchors": 2,
+    "runtime_routing": false,
+    "search_and_explore_are_distinct": true
+  },
+  "structural_product_contract_hash": "29c7c30f83a90b678ef04f9a6c35adfe0acf130a72f9dd8f58c6f7ed3cb10c31",
+  "supported_profile_modes": [
+    "none",
+    "persona",
+    "custom"
+  ]
+}
