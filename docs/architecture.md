@@ -4,8 +4,10 @@
 
 Flincy's full system has three operational boundaries: constructing data,
 publishing a public-safe read model, and preparing/building the static site.
-The selected code here illustrates those boundaries without shipping their
-entire implementation.
+This separation lets Flincy validate and prepare data independently from
+public-data publication and application delivery, while keeping interactive
+decisions lightweight in the browser. The selected code here illustrates
+those boundaries without shipping their entire implementation.
 
 ## The real system and the included subset
 
@@ -24,6 +26,9 @@ The product is statically delivered, but its preparation is not a browser task.
 Python and DuckDB construct facts and upstream scores. O3 publication and the
 frontend preparation/build are separate operations, not a single implied command
 available in this repository.
+
+For how source evidence is retained, reinterpreted and transformed into
+product-ready facts, see the [data pipeline](pipeline.md).
 
 ## Three axes, not one universal score
 
@@ -94,10 +99,15 @@ to O4; [decision controls](../reference/frontend/components/DecisionFocus.tsx),
 [listing inspection](../reference/frontend/components/ListingDetail.tsx) and
 [map rendering](../reference/frontend/components/ExploreMap.tsx) illustrate consumers.
 
-R5 travel-time computation happens upstream. Direction, network support and
-missing statuses remain properties of prepared facts; the browser does not
-calculate routes when a slider changes. Static files support interaction, while
-the site's basemap remains an external runtime resource.
+Flincy uses R5, an open-source multimodal routing engine, to compute travel
+times upstream. Prepared facts preserve travel direction, network support and
+missing-data statuses. When users adjust their search, the browser evaluates
+these facts without requesting new route calculations.
+
+Nearby-service proximity and walking-access facts are distinct from
+travel-time facts for supported destinations; they are not interchangeable.
+Static files support interaction, while the site's basemap remains an external
+runtime resource.
 
 The five UI files lack application wiring, aliases, styles, helpers, data and
 dependencies. See the [frontend reference boundary](../reference/frontend/README.md).

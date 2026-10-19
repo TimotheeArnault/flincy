@@ -1,22 +1,23 @@
 # Flincy - Housing decisions, made clearer
 
-Flincy helps people compare rental homes in the Montreal area around the places
-they need to reach, the limits they cannot exceed, and the preferences that matter
-to them. It keeps missing information visible and separates a home's value,
-nearby services, and personal fit instead of collapsing them into one score.
+Flincy is an independent, end-to-end data and product project built around a
+practical problem: rental listings are fragmented, incomplete and difficult to
+compare.
 
-This is a **curated source snapshot**, not a checkout of the complete application.
-The runnable part is the real TypeScript user-fit engine with entirely fictional
-prepared inputs. The broader system uses Python/DuckDB for data preparation and
-Next.js, React and MapLibre for a statically delivered interface.
+Focused on the Montreal area, it turns listings from multiple sources into
+structured, enriched information that people can use to weigh destinations,
+housing constraints and personal preferences. The product keeps missing facts
+visible and evaluates housing value, nearby services and personal fit as three
+separate dimensions, rather than reducing everything to a single score.
+
+This repository contains a **curated selection of real Flincy code**: a runnable
+TypeScript user-fit engine with fictional prepared inputs, selected Python
+helpers and frontend source references. It is not a second checkout of the
+complete live application.
 
 ## Live demo
 
 [Explore Flincy](https://flincy.ca) (French-language interface).
-
-The live product and this code snapshot have different scopes. This repository
-does not contain the deployed site's data or build inputs, and does not claim
-byte-level identity with the currently served version.
 
 ## What Flincy does
 
@@ -30,31 +31,34 @@ byte-level identity with the currently served version.
 ## Architecture at a glance
 
 ```text
-Real system, not fully shipped here:
-Sources -> Python / DuckDB -> prepared facts + separate score axes
-        -> O3 public-safe bundle -> frontend delivery projection
-        -> O4 browser engine -> Next.js / React / MapLibre interface
+Full Flincy system:
+Rental sources -> acquisition / parsing -> Python / DuckDB
+               -> identity, quality, geography and prepared facts
+               -> objective / life-centric scores + user-fit facts
+               -> O3 public-safe bundle
+               -> frontend delivery projection -> O4 browser engine
+               -> Next.js / React / MapLibre interface
 
-Runnable here:
-Fictional prepared inputs -> real O4 engine -> explained, ranked JSON
+Runnable in this repository:
+Five fictional prepared listings -> real O4 engine -> explained rankings
 
 Also included:
-Selected Python helpers + one delivery test suite
-Selected frontend sources for inspection, not a standalone UI
+Selected Python scoring, integrity and delivery helpers
+Selected frontend sources for inspection
 ```
 
 O3 is the product read-model/export boundary; O4 is the browser user-fit engine.
-The [architecture](docs/architecture.md) explains their responsibilities.
+The [architecture](docs/architecture.md) explains how these layers interact.
 
 ## What's in this repository
 
-| Area | What you can do |
+| Area | What you can explore |
 |---|---|
-| [`web/fit-engine/`](web/fit-engine/) | Compile the real engine and run its selected tests. Start with [`evaluateAndRank`](web/fit-engine/src/engine.ts). |
+| [`web/fit-engine/`](web/fit-engine/) | Compile the real engine and run selected tests. Start with [`evaluateAndRank`](web/fit-engine/src/engine.ts). |
 | [`examples/synthetic-search/`](examples/synthetic-search/) | Run five fictional cases against a versioned expected result. |
-| [`pipeline/`](pipeline/) | Inspect four authentic Python helpers; run the [delivery tests](tests/test_frontend_free_anchor_delivery.py). Not a complete pipeline. |
-| [`reference/frontend/`](reference/frontend/README.md) | Read five authentic UI/state/runtime sources. Dependencies, application wiring and data are intentionally absent. |
-| [`docs/source-map.json`](docs/source-map.json) | Check selected source-file hashes and the distinction between copied code, adaptation and demo-only files. |
+| [`pipeline/`](pipeline/) | Inspect real Python scoring, explanation, integrity and delivery helpers; run the [delivery tests](tests/test_frontend_free_anchor_delivery.py). |
+| [`reference/frontend/`](reference/frontend/README.md) | Explore selected Search State, runtime, decision, inspection and map sources from the live interface. These are inspectable, not a standalone UI. |
+| [`docs/source-map.json`](docs/source-map.json) | Verify selected source-file hashes and see which files were copied, adapted or created for the demo. |
 
 ## Quick start
 
@@ -66,57 +70,62 @@ npm.cmd test
 npm.cmd run demo
 ```
 
-These are the Windows commands used for validation. The selected suite contains
-**18 tests**; the demo prints JSON after npm/build logs. No server or real listing
-data is required. Five additional delivery tests use Python's standard library.
-
-Tested on Windows x64 with Node **24.20.0**, npm **11.19.0**, and Python **3.14.4**.
-The preserved `.node-version` says **24.19.0**; that exact patch and other operating
-systems have not been validated. See [reproducibility](docs/reproducibility.md)
-for Python, exact-output verification and the scope of these checks.
+On the validated Windows environment, the selected TypeScript suite passes
+**18 tests** and the demonstration prints explained, ranked JSON. Five separate
+Python delivery tests use only the standard library. See
+[reproducibility](docs/reproducibility.md) for the Python command, tested
+versions, exact-output verification and platform limitations.
 
 ## How ranking works
 
-Feasibility, listing eligibility, preference coverage and preference score are
-different outputs. Within comparable feasibility/eligibility bands, the current
-ranking places complete coverage before partial coverage, then compares coverage
-and score in descending order.
+Flincy keeps required-trip feasibility, housing eligibility, preference score
+and evidence coverage separate. For comparable feasibility/eligibility outcomes,
+the current ranking considers coverage before preference score.
 
-In the synthetic demo, A scores **50 with 100% coverage** and ranks before B,
-which scores **100 with 50% coverage**. Coverage means the weighted share of
-preferences that can be evaluated, not accuracy or housing quality. An unknown
-fact is not a confirmed negative.
-
-This is the current product trade-off, **not a proven optimal ranking policy**.
-Coverage-versus-score calibration is deferred. The
-[scenario and oracle rationale](examples/synthetic-search/README.md) explain
-why only A and B belong to the main results.
+In the fictional demo, A ranks ahead of B despite scoring **50 versus 100**:
+A has **100% preference coverage**, while B has **50%**. Coverage measures the
+share of weighted preferences that can be evaluated, not the accuracy or
+quality of a listing. This is a product trade-off, not a claim of optimality.
+See the [scenario and oracle rationale](examples/synthetic-search/README.md)
+for the full five-case breakdown.
 
 ## Engineering decisions and development approach
 
-- Prepare expensive geography/routing facts upstream; keep interactive evaluation
-  in a small deterministic browser engine.
-- Preserve provenance and explicit missing states through typed boundaries.
-- Separate feasibility and hard constraints from preference points.
-- Verify a narrow, authentic execution path rather than manufacture a mock
-  application around unavailable production data.
+- Keep acquisition, parsing, product qualification and scoring as distinct
+  responsibilities rather than treating every captured field as a reliable fact.
+- Prepare geographic and routing facts upstream while keeping interactive
+  user-fit evaluation in a deterministic browser engine.
+- Preserve provenance and unknown states; distinguish hard constraints from
+  scored preferences and keep the three score axes separate.
+- Validate a bounded path using real production code and synthetic inputs,
+  rather than build an artificial copy of the full application.
 
-The project was developed through incremental data and product experiments.
-Implementation and tests were extensively assisted by Codex, with human-led
-scope, architecture trade-offs, evidence review and release decisions. Internal
-reality audits and clean-checkout checks informed this selection; their transcripts
-and private operational data are not included. Generative AI assisted development;
-it does not select apartments in this scoring engine.
+I developed Flincy through incremental data and product experiments, guiding
+product decisions, architecture trade-offs, acceptance criteria and release
+scope. Codex extensively assisted with implementation, code inspection and
+testing. The housing ranking itself follows deterministic rules, not generative
+AI recommendations.
+
+## Technical portfolio snapshot — October 2026
+
+This repository preserves a curated, reproducible snapshot of selected Flincy
+components. The live product continues to evolve independently, and this
+repository is not synchronized with future product development. Regular updates
+are not planned, although important security or documentation corrections may
+be published.
 
 ## Scope and limitations
 
-This repository does **not** include acquisition tooling, private observations,
-a DuckDB database, production O3 bundles, postal/POI catalogs, routing matrices,
-R5 inputs, map assets or a buildable Next.js application. The Python helpers do
-not reconstruct those missing stages.
+This is a selected code snapshot, not the complete Flincy pipeline. Acquisition
+tooling, source observations, the DuckDB database, production O3 bundles and
+geographic/routing datasets are not distributed. The frontend references are
+not a buildable Next.js application; the runnable demonstration starts from
+fictional facts that have already been prepared for O4.
 
 Read [how a listing becomes usable](docs/pipeline.md), inspect the
 [layer boundaries](docs/architecture.md), or
 [reproduce the bounded demonstration](docs/reproducibility.md).
-Source visibility and provenance are not a license grant; publication and
-licensing review remain separate from these technical checks.
+This code is made publicly available for inspection. No open-source license
+granting general permission to reuse it is provided. Source visibility and
+provenance are not a license grant; third-party components remain subject to
+their respective terms.
